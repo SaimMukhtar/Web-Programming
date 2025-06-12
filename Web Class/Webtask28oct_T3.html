@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Squares</title>
+    <style>
+        .square {
+            fill: red;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <svg width="500" height="500"></svg>
+    <script>
+        const svg = d3.select("svg");
+        const size = 50;
+        const positions = [0, size + 30, (size + 30) * 2];
+        
+        const squares = svg.selectAll("rect")
+            .data(positions)
+            .enter()
+            .append("rect")
+            .attr("class", "square")
+            .attr("x", d => 100 + d)
+            .attr("y", d => 100 + d)
+            .attr("width", size)
+            .attr("height", size)
+            .style("fill", "red");
+
+        squares.on("click", function(event, d) {
+            var flag;
+
+            if (d3.select(this).attr("rx")) {
+                flag = false; 
+            } else {
+                flag = true;
+            }
+
+            d3.select(this)
+                .transition()
+                .duration(300)
+                .attr("y", d3.select(this).attr("y") - 20)
+                .transition()
+                .duration(300)
+                .attr("y", d3.select(this).attr("y"))
+                .transition()
+                .duration(300)
+                .attr("rx", flag ? size / 2 : 0)
+                .attr("ry", flag ? size / 2 : 0)
+                .style("fill", "green");
+        });
+    </script>
+</body>
+</html>

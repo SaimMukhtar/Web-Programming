@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FAST University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-text-container">
+        <img src="logo.png" alt="FAST University Logo" width="50" height="50">
+        <h1>FAST University</h1>
+    </div>
+    <div>
+        <i class="fas fa-bars" onclick="toggleMenu()"></i>
+    </div>
+</header>
+
+<nav id="navbar">
+    <a href="index.html">Home</a>
+    <a href="academics.html">Academics</a>
+    <a href="admission.html">Admission</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>About Us</h2>
+    <p>Hi, I'm Mirza, a passionate web developer currently associated with FAST University. Here’s more about me:</p>
+    <ul>
+        <li><strong>Education:</strong> BS in Computer Science from FAST University</li>
+        <li><strong>Skills:</strong> Web Development, HTML, CSS, JavaScript</li>
+        <li><strong>Experience:</strong> 3 years as a front-end developer</li>
+        <li><strong>Projects:</strong> FAST University Website, E-commerce platforms, etc.</li>
+    </ul>
+</div>
+
+<footer>
+    <p>&copy; 2024 FAST University. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        var nav = document.getElementById("navbar");
+        nav.classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>

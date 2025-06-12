@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript</title>
+    <script>
+        let counter = 0;
+
+       /* function count(){
+            let heading = document.querySelector('h1');
+            if (heading.innerHTML === 'Hello'){
+                heading.innerHTML = 'Goodbye!';
+            }
+            else{
+                heading.innerHTML = 'Hello';
+            }
+        } */
+
+        function count(){
+            counter++;
+            document.querySelector('h1').innerHTML = counter;
+
+            if (counter % 10 === 0) {
+                alert(`Now counter is ${counter}`);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded',function(){
+            document.querySelector('button').onclick = count;
+        });
+
+    </script>
+</head>
+
+<body>
+    <!-- <h1>Hello</h1> -->
+     <h1>0</h1>
+    <button>Click here</button>
+</body>
+</html>

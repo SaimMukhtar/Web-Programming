@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>D3 Column Chart with Base Line</title>
+</head>
+<body>
+    <svg width="300" height="250"></svg>
+    <script>
+        const data = [10, 20, 30, 40, 10];
+        const svg = d3.select("svg");
+        const barWidth = 40;
+        const chartHeight = 200;
+        const baseLineX = 0;
+
+        svg.append("line")
+            .attr("x1", baseLineX)
+            .attr("y1", 0)
+            .attr("x2", baseLineX)
+            .attr("y2", chartHeight)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
+
+        const bars = svg.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("y", (d, i) => i * (barWidth + 10))
+            .attr("x", baseLineX)
+            .attr("height", barWidth)
+            .attr("width", 0)
+            .attr("fill", "steelblue");
+
+        bars.transition()
+            .duration(1000)
+            .ease(d3.easeBounce)
+            .delay((d, i) => i * 1000)
+            .attr("width", d => d * 4);
+    </script>
+</body>
+</html>

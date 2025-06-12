@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> web page </title>
+    <script src="classroom.js">
+        </script>
+
+        <style>
+            
+            </style>
+        </head>
+        <body> 
+<h3> interest calculator</h3>
+<form class="table" id="input"> 
+ <div class="row">
+    <label for="deposit"> initial deposit:</label>
+    <input type="number" id="deposit" 
+    min="1" max="9999" step="1">
+ </div>
+ <div class="row">
+    <label for="rate"> annaual interest rate:</label>
+    <input type="number" id="rate" 
+    min="0" max="100" step=".1">
+    <span> &nbsp;% </span>
+ </div>
+ <div class="row">
+    <label for="years"> years to grow:</label>
+    <input type="number" id="years" 
+    min="1" max="20" step="1">
+ </div>
+
+</form>
+<br>
+<input type="button" form="input" value="generate interest"
+onclick=" genertaeTable(this.form);">
+
+<div id="result"></div>
+
+
+        </body>
+        </html>

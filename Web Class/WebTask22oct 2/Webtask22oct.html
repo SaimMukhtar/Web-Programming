@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+        }
+
+        .key {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            color: white;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.1s, background-color 0.1s;
+        }
+
+        .key.pressed {
+            transform: scale(1.1);
+            background-color: #f39c12;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="key" data-key="65">A</div>
+        <div class="key" data-key="83">S</div>
+        <div class="key" data-key="68">D</div>
+        <div class="key" data-key="70">F</div>
+        <div class="key" data-key="71">G</div>
+        <div class="key" data-key="72">H</div>
+        <div class="key" data-key="74">J</div>
+        <div class="key" data-key="75">K</div>
+        <div class="key" data-key="76">L</div>
+    </div>
+
+    <audio id="sound65" src="sounds/sound1.mp3"></audio>
+    <audio id="sound83" src="sounds/sound2.mp3"></audio>
+    <audio id="sound68" src="sounds/sound3.mp3"></audio>
+    <audio id="sound70" src="sounds/sound4.mp3"></audio>
+    <audio id="sound71" src="sounds/sound5.mp3"></audio>
+    <audio id="sound72" src="sounds/sound6.mp3"></audio>
+    <audio id="sound74" src="sounds/sound7.mp3"></audio>
+    <audio id="sound75" src="sounds/sound8.mp3"></audio>
+    <audio id="sound76" src="sounds/sound9.mp3"></audio>
+
+    <script>
+        function playSound(keyCode) {
+            const audio = document.getElementById(`sound${keyCode}`);
+            const key = document.querySelector(`.key[data-key="${keyCode}"]`);
+            if (!audio) return;
+
+            audio.currentTime = 0; 
+            audio.play();
+
+            key.classList.add('pressed');
+            setTimeout(() => key.classList.remove('pressed'), 200); 
+        }
+
+        window.addEventListener('keydown', (e) => {
+            playSound(e.keyCode);
+        });
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => {
+            key.addEventListener('click', () => {
+                playSound(key.getAttribute('data-key'));
+            });
+        });
+    </script>
+
+</body>
+</html>
